@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, type PointerEvent, type ReactNode, type FormEvent } from 'react';
-import { ArrowUpRight, Instagram, Nfc, Star, Check, MessageCircle, RotateCcw, Maximize2 } from 'lucide-react';
+import { ArrowUpRight, Check, MessageCircle, Maximize2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
 import photo from '@/assets/tap-instagram-detail.jpg.asset.json';
@@ -8,6 +8,7 @@ import fullInstagram from '@/assets/tap-review-instagram-official.jpeg.asset.jso
 import fullGoogle from '@/assets/tap-review-google-official.jpeg.asset.json';
 import { submitInquiry } from '@/lib/inquiries.functions';
 import { tapReview, whatsapp } from '@/lib/tap-review';
+export { Demo } from './realistic-demo';
 
 export function ContactButton({ children = 'Quiero mi Tap Review', product, secondary = false }: { children?: ReactNode; product?: string; secondary?: boolean }) {
   return <Button asChild variant={secondary ? 'outline' : 'default'} className={`tap-button ${secondary ? 'tap-outline' : ''}`}><a href={whatsapp(product)} target="_blank" rel="noopener noreferrer">{children}<ArrowUpRight size={17} /></a></Button>;
@@ -24,18 +25,6 @@ export function ProductPhoto({ className = '', product = 'Instagram' }: { classN
     event.currentTarget.style.setProperty('--light-y', `${(event.clientY - rect.top) / rect.height * 100}%`);
   }
   return <div ref={ref} className={`product-photo ${product === 'Google' ? 'google-photo' : ''} ${className}`} onPointerMove={move} onPointerLeave={() => { ref.current?.style.setProperty('--tilt-x', '0deg'); ref.current?.style.setProperty('--tilt-y', '0deg'); }}><img src={product === 'Google' ? googlePhoto.url : photo.url} alt={`Fotografía oficial de tarjetas NFC Tap Review ${product}`} width={product === 'Google' ? 560 : 569} height={product === 'Google' ? 460 : 1000} loading={className.includes('hero') ? 'eager' : 'lazy'} /><span className="photo-light" aria-hidden="true" /><Dialog><DialogTrigger asChild><Button variant="secondary" size="icon" className="photo-zoom" aria-label={`Ampliar fotografía de Tap Review ${product}`} title={`Ampliar fotografía de Tap Review ${product}`}><Maximize2 /></Button></DialogTrigger><DialogContent className="official-photo-dialog"><DialogTitle>Tap Review — {product}</DialogTitle><DialogDescription>Fotografía oficial del producto.</DialogDescription><img src={product === 'Google' ? fullGoogle.url : fullInstagram.url} alt={`Fotografía original de Tap Review ${product}`} className="official-photo-expanded" /></DialogContent></Dialog></div>;
-}
-
-export function Demo() {
-  const [destination, setDestination] = useState<'Google' | 'Instagram' | null>(null);
-  const [phase, setPhase] = useState<'idle' | 'tap' | 'connected'>('idle');
-  useEffect(() => {
-    if (phase !== 'tap') return;
-    const timer = window.setTimeout(() => setPhase('connected'), window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 50 : 1100);
-    return () => window.clearTimeout(timer);
-  }, [phase]);
-  function play(value: 'Google' | 'Instagram') { setDestination(value); setPhase('tap'); }
-  return <section className="demo-section section" id="demo"><div className="container demo-layout"><div className="demo-copy reveal"><span className="eyebrow">UN TOQUE. ASÍ DE SIMPLE.</span><h2>Mirá cómo<br />funciona.</h2><p>De tu tarjeta al celular de tu cliente.<br />Sin buscar. Sin escribir. Sin vueltas.</p><div className="demo-buttons"><Button className="tap-button" disabled={phase === 'tap'} onClick={() => play('Google')}><span className="google-mark">G</span>Probar demo Google<ArrowUpRight /></Button><Button className="tap-button tap-outline" variant="outline" disabled={phase === 'tap'} onClick={() => play('Instagram')}><Instagram />Probar demo Instagram<ArrowUpRight /></Button></div><small>Demostración visual. No publica reseñas ni accede a cuentas reales.</small></div><div className={`demo-stage ${phase}`}><div className="demo-card"><ProductPhoto product={destination || 'Instagram'} /><span>Tap Review · {destination || 'Instagram'}</span></div><div className="nfc-wave"><Nfc /></div><div className="phone"><div className="phone-camera" /><div className="phone-screen" aria-live="polite">{phase === 'connected' ? <><div className="connected-label"><Check size={13} />Conectado</div>{destination === 'Google' ? <><span className="google-mark phone-logo">G</span><span className="screen-overline">Google Reviews</span><h3>Tu negocio</h3><p>Compartí tu experiencia</p><div className="stars">{Array.from({ length: 5 }, (_, i) => <Star key={i} />)}</div><div className="simulated-input">Escribí una reseña…</div><span className="screen-action">Pantalla de ejemplo</span></> : <><Instagram className="phone-logo" /><span className="screen-overline">Instagram</span><div className="profile-avatar">TU<br />MARCA</div><h3>@tu.negocio</h3><p>El Instagram de tu negocio,<br />a un toque de distancia.</p><span className="screen-action">Perfil de ejemplo</span></>}<Button variant="ghost" className="replay" onClick={() => setPhase('idle')}><RotateCcw />Volver a probar</Button></> : <><Nfc className="phone-logo" /><h3>{phase === 'tap' ? '¡Tap!' : 'Acercá. Tocá. Conectá.'}</h3><p>{phase === 'tap' ? `Abriendo ${destination}…` : 'Tu negocio, al alcance de un toque.'}</p><span className="phone-time">9:41</span></>}</div></div></div></div></section>;
 }
 
 export function InquiryForm() {

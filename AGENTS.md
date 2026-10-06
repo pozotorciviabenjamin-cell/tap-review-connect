@@ -15,3 +15,4 @@
 - Preserve official product photos through CDN asset pointers; never substitute missing product photos with invented cards.
 - Present new official photos with non-destructive detail crops and accessible full-original photo dialogs; use CSS perspective for lightweight product depth rather than a 3D engine.
 - Store validated public inquiries through a server function and service-only database RPC with atomic phone-based throttling; never expose submissions to visitors.
+- Keep the physical-phone demo in an isolated presentation module with a cleaned-up timed state sequence and local semantic CSS tokens; this prevents animation changes from affecting product photos or inquiries.
