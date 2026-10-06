@@ -43,7 +43,7 @@ export function Demo() {
     <div className="container">
       <header className="real-demo-heading"><span className="eyebrow">LA EXPERIENCIA TAP REVIEW</span><h2>Mirá cómo funciona</h2><p>Un simple toque conecta a tu cliente directamente con tu negocio.</p></header>
       <div className="real-demo-selector" role="group" aria-label="Destino de la demostración">
-        {(['Google', 'Instagram'] as const).map(value => <Button key={value} variant="ghost" aria-pressed={destination === value} onClick={() => play(value)}>{value === 'Google' ? <span className="google-mark">G</span> : <Instagram size={18} />}{value}</Button>)}
+        {(['Google', 'Instagram'] as const).map(value => <Button key={value} variant="ghost" aria-label={value} aria-pressed={destination === value} onClick={() => play(value)}>{value === 'Google' ? <span className="google-mark" aria-hidden="true">G</span> : <Instagram size={18} />}{value}</Button>)}
       </div>
       <div className="real-demo-surface" data-phase={phase} data-destination={destination}>
         <span className="real-demo-surface-label">TAP REVIEW · {destination.toUpperCase()}</span>
