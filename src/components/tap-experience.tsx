@@ -1,8 +1,11 @@
 import { useState, useEffect, useRef, type PointerEvent, type ReactNode, type FormEvent } from 'react';
-import { ArrowUpRight, Instagram, Nfc, Star, Check, MessageCircle, RotateCcw } from 'lucide-react';
+import { ArrowUpRight, Instagram, Nfc, Star, Check, MessageCircle, RotateCcw, Maximize2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import photo from '@/assets/tap-review-instagram.png.asset.json';
-import googlePhoto from '@/assets/tap-review-google.png.asset.json';
+import { Dialog, DialogContent, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
+import photo from '@/assets/tap-instagram-detail.jpg.asset.json';
+import googlePhoto from '@/assets/tap-google-detail.jpg.asset.json';
+import fullInstagram from '@/assets/tap-review-instagram-official.jpeg.asset.json';
+import fullGoogle from '@/assets/tap-review-google-official.jpeg.asset.json';
 import { submitInquiry } from '@/lib/inquiries.functions';
 import { tapReview, whatsapp } from '@/lib/tap-review';
 
@@ -15,10 +18,12 @@ export function ProductPhoto({ className = '', product = 'Instagram' }: { classN
   function move(event: PointerEvent<HTMLDivElement>) {
     if (event.pointerType !== 'mouse' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const rect = event.currentTarget.getBoundingClientRect();
-    event.currentTarget.style.setProperty('--tilt-x', `${(event.clientY - rect.top - rect.height / 2) / rect.height * -7}deg`);
-    event.currentTarget.style.setProperty('--tilt-y', `${(event.clientX - rect.left - rect.width / 2) / rect.width * 7}deg`);
+    event.currentTarget.style.setProperty('--tilt-x', `${(event.clientY - rect.top - rect.height / 2) / rect.height * -10}deg`);
+    event.currentTarget.style.setProperty('--tilt-y', `${(event.clientX - rect.left - rect.width / 2) / rect.width * 10}deg`);
+    event.currentTarget.style.setProperty('--light-x', `${(event.clientX - rect.left) / rect.width * 100}%`);
+    event.currentTarget.style.setProperty('--light-y', `${(event.clientY - rect.top) / rect.height * 100}%`);
   }
-  return <div ref={ref} className={`product-photo ${product === 'Google' ? 'google-photo' : ''} ${className}`} onPointerMove={move} onPointerLeave={() => { ref.current?.style.setProperty('--tilt-x', '0deg'); ref.current?.style.setProperty('--tilt-y', '0deg'); }}><img src={product === 'Google' ? googlePhoto.url : photo.url} alt={`Fotografía oficial de tarjetas NFC Tap Review ${product}`} width="550" height="955" loading={className.includes('hero') ? 'eager' : 'lazy'} /></div>;
+  return <div ref={ref} className={`product-photo ${product === 'Google' ? 'google-photo' : ''} ${className}`} onPointerMove={move} onPointerLeave={() => { ref.current?.style.setProperty('--tilt-x', '0deg'); ref.current?.style.setProperty('--tilt-y', '0deg'); }}><img src={product === 'Google' ? googlePhoto.url : photo.url} alt={`Fotografía oficial de tarjetas NFC Tap Review ${product}`} width={product === 'Google' ? 560 : 569} height={product === 'Google' ? 460 : 1000} loading={className.includes('hero') ? 'eager' : 'lazy'} /><span className="photo-light" aria-hidden="true" /><Dialog><DialogTrigger asChild><Button variant="secondary" size="icon" className="photo-zoom" aria-label={`Ampliar fotografía de Tap Review ${product}`} title={`Ampliar fotografía de Tap Review ${product}`}><Maximize2 /></Button></DialogTrigger><DialogContent className="official-photo-dialog"><DialogTitle>Tap Review — {product}</DialogTitle><DialogDescription>Fotografía oficial del producto.</DialogDescription><img src={product === 'Google' ? fullGoogle.url : fullInstagram.url} alt={`Fotografía original de Tap Review ${product}`} className="official-photo-expanded" /></DialogContent></Dialog></div>;
 }
 
 export function Demo() {
