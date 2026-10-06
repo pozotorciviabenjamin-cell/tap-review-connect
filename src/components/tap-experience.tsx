@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, type PointerEvent, type ReactNode, type Fo
 import { ArrowUpRight, Instagram, Nfc, Star, Check, MessageCircle, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import photo from '@/assets/tap-review-instagram.png.asset.json';
+import googlePhoto from '@/assets/tap-review-google.png.asset.json';
 import { submitInquiry } from '@/lib/inquiries.functions';
 import { tapReview, whatsapp } from '@/lib/tap-review';
 
@@ -9,7 +10,7 @@ export function ContactButton({ children = 'Quiero mi Tap Review', product, seco
   return <Button asChild variant={secondary ? 'outline' : 'default'} className={`tap-button ${secondary ? 'tap-outline' : ''}`}><a href={whatsapp(product)} target="_blank" rel="noopener noreferrer">{children}<ArrowUpRight size={17} /></a></Button>;
 }
 
-export function ProductPhoto({ className = '' }: { className?: string }) {
+export function ProductPhoto({ className = '', product = 'Instagram' }: { className?: string; product?: 'Google' | 'Instagram' }) {
   const ref = useRef<HTMLDivElement>(null);
   function move(event: PointerEvent<HTMLDivElement>) {
     if (event.pointerType !== 'mouse' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -17,7 +18,7 @@ export function ProductPhoto({ className = '' }: { className?: string }) {
     event.currentTarget.style.setProperty('--tilt-x', `${(event.clientY - rect.top - rect.height / 2) / rect.height * -7}deg`);
     event.currentTarget.style.setProperty('--tilt-y', `${(event.clientX - rect.left - rect.width / 2) / rect.width * 7}deg`);
   }
-  return <div ref={ref} className={`product-photo ${className}`} onPointerMove={move} onPointerLeave={() => { ref.current?.style.setProperty('--tilt-x', '0deg'); ref.current?.style.setProperty('--tilt-y', '0deg'); }}><img src={photo.url} alt="Fotografía oficial de tarjetas NFC Tap Review Instagram" width="550" height="955" loading={className.includes('hero') ? 'eager' : 'lazy'} /></div>;
+  return <div ref={ref} className={`product-photo ${product === 'Google' ? 'google-photo' : ''} ${className}`} onPointerMove={move} onPointerLeave={() => { ref.current?.style.setProperty('--tilt-x', '0deg'); ref.current?.style.setProperty('--tilt-y', '0deg'); }}><img src={product === 'Google' ? googlePhoto.url : photo.url} alt={`Fotografía oficial de tarjetas NFC Tap Review ${product}`} width="550" height="955" loading={className.includes('hero') ? 'eager' : 'lazy'} /></div>;
 }
 
 export function Demo() {
