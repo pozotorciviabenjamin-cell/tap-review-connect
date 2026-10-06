@@ -13,4 +13,5 @@
 - Keep editable catalog prices and contact destinations in one browser-safe configuration module so the whole page stays consistent.
 - Use a single home page with anchor sections for this one-page commercial experience; interactive product demonstrations are explicitly simulated.
 - Preserve official product photos through CDN asset pointers; never substitute missing product photos with invented cards.
+- Present new official photos with non-destructive detail crops and accessible full-original photo dialogs; use CSS perspective for lightweight product depth rather than a 3D engine.
 - Store validated public inquiries through a server function and service-only database RPC with atomic phone-based throttling; never expose submissions to visitors.

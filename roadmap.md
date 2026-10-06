@@ -4,3 +4,5 @@
 - [x] Connect inquiry storage and WhatsApp purchase links.
 - [x] Verify desktop/mobile, prices, demo and inquiry flow.
 - [x] Incorporate newly supplied official Google PNG alongside Instagram throughout products, pack, demo and cover.
+- [x] Improve presentation with the new official photographs, photo inspection and restrained depth animation.
+- [x] Verify mobile navigation, enlarged photographs and both interactive demonstrations.
