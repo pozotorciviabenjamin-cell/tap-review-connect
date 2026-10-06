@@ -14,13 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      contact_submissions: {
+        Row: {
+          business: string
+          created_at: string
+          id: string
+          message: string
+          name: string
+          phone: string
+          product: string
+        }
+        Insert: {
+          business: string
+          created_at?: string
+          id?: string
+          message?: string
+          name: string
+          phone: string
+          product: string
+        }
+        Update: {
+          business?: string
+          created_at?: string
+          id?: string
+          message?: string
+          name?: string
+          phone?: string
+          product?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      submit_tap_inquiry: {
+        Args: {
+          p_business: string
+          p_message: string
+          p_name: string
+          p_phone: string
+          p_product: string
+        }
+        Returns: string
+      }
     }
     Enums: {
       [_ in never]: never
