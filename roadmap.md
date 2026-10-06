@@ -6,3 +6,5 @@
 - [x] Incorporate newly supplied official Google PNG alongside Instagram throughout products, pack, demo and cover.
 - [x] Improve presentation with the new official photographs, photo inspection and restrained depth animation.
 - [x] Verify mobile navigation, enlarged photographs and both interactive demonstrations.
+- [x] Replace demo with nine-second physical iPhone / NFC / notification / destination flow and uploaded wallpaper.
+- [x] Verify both full sequences, replay, selector resets, reduced motion and mobile layout.
