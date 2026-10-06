@@ -8,7 +8,7 @@ export const tapReview = {
   ],
 } as const;
 export const money = (value: number) => `$${new Intl.NumberFormat('es-AR').format(value)}`;
-export function whatsapp(product = 'una tarjeta NFC para mi negocio', phone = tapReview.phones[0].number) {
+export function whatsapp(product = 'una tarjeta NFC para mi negocio', phone: string = tapReview.phones[0].number) {
   return `https://wa.me/${phone}?text=${encodeURIComponent(`Hola! Vi Tap Review y quiero consultar por ${product}.`)}`;
 }
 export const navigation = [
