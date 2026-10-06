@@ -22,7 +22,7 @@ const categories = [
   { name: 'Barberías', icon: Scissors, text: 'Tu cliente termina el corte y puede encontrarte en Instagram con un toque.' },
   { name: 'Tiendas', icon: ShoppingBag, text: 'Conectá tu local físico con tus redes.' },
   { name: 'Emprendimientos', icon: Store, text: 'Llevá tu presencia digital a donde está tu cliente.' },
-];
+] as const;
 
 function Index() {
   const [menu, setMenu] = useState(false);
