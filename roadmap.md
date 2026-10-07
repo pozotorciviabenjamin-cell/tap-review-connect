@@ -8,3 +8,5 @@
 - [x] Verify mobile navigation, enlarged photographs and both interactive demonstrations.
 - [x] Replace demo with nine-second physical iPhone / NFC / notification / destination flow and uploaded wallpaper.
 - [x] Verify both full sequences, replay, selector resets, reduced motion and mobile layout.
+- [ ] Upgrade only NFC demo with user-started experience, realistic partial hand, persistent tappable notification, subtle stages and reference-based examples.
+- [ ] Verify start, notification interaction, both destinations, replay and mobile framing.
