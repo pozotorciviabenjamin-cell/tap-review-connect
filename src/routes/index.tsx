@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowDown, ArrowRight, ArrowUpRight, Check, Coffee, Instagram, MapPin, Menu, MessageCircle, Nfc, Package, Palette, Scissors, ShieldCheck, ShoppingBag, Smartphone, Sparkles, Store, Truck, Utensils, X, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ContactButton, Demo, InquiryForm, ProductPhoto } from '@/components/tap-experience';
