@@ -34,3 +34,5 @@
 @media(prefers-reduced-motion:reduce){.realistic-demo *, .realistic-demo *:before{animation:none!important;transition:none!important}.demo-human-hand{display:none}.real-demo-surface .real-iphone-position{transform:translate(-32px,0)!important}.real-demo-surface[data-phase=approach] .real-demo-scene{transform:scale(1.08)}.real-demo-scene{transition:none}@media(max-width:700px){.real-demo-surface[data-phase=approach] .real-demo-scene{transform:scale(.88)}}@media(max-width:500px){.real-demo-surface[data-phase=approach] .real-demo-scene{transform:scale(.73)}}@media(max-width:390px){.real-demo-surface[data-phase=approach] .real-demo-scene{transform:scale(.68)}}}
 /* Flatten screen descendants to keep hit testing aligned with the tilted phone. */
 .real-iphone{transform-style:flat}.iphone-destination{z-index:5}.demo-instagram-real,.demo-google-real{z-index:1}.iphone-status.on-page{color:var(--demo-light)}
+.real-card img{object-fit:contain}.real-card{height:167px}.real-demo-surface[data-destination=Instagram] .real-card{height:271px}
+@media(max-width:500px){.real-card{height:144px}.real-demo-surface[data-destination=Instagram] .real-card{height:237px}}
