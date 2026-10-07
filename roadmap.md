@@ -8,8 +8,8 @@
 - [x] Verify mobile navigation, enlarged photographs and both interactive demonstrations.
 - [x] Replace demo with nine-second physical iPhone / NFC / notification / destination flow and uploaded wallpaper.
 - [x] Verify both full sequences, replay, selector resets, reduced motion and mobile layout.
-- [ ] Upgrade only NFC demo with user-started experience, realistic partial hand, persistent tappable notification, subtle stages and reference-based examples.
-- [ ] Verify start, notification interaction, both destinations, replay and mobile framing.
-- [ ] Replace displayed official product photos with newly supplied Google and Instagram designs everywhere.
-- [ ] Upgrade existing products, selector, paired pack, personalization, setting examples and final CTA without changing prices or working contact functions.
-- [ ] Connect catalog destination choices to NFC demo and verify mobile layouts and animations.
+- [x] Upgrade only NFC demo with user-started experience, realistic partial hand, persistent tappable notification, subtle stages and reference-based examples.
+- [x] Verify start, notification interaction, both destinations, replay and mobile framing.
+- [x] Replace displayed official product photos with newly supplied Google and Instagram designs everywhere.
+- [x] Upgrade existing products, selector, paired pack, personalization, setting examples and final CTA without changing prices or working contact functions.
+- [x] Connect catalog destination choices to NFC demo and verify mobile layouts and animations.
