@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { BatteryFull, Camera, ChevronLeft, Flashlight, Instagram, LockKeyhole, Nfc, ArrowRight, RotateCcw, Signal, Wifi, Star, Grid3X3, Plus, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import google from '@/assets/tap-google-detail.jpg.asset.json';
-import instagram from '@/assets/tap-instagram-detail.jpg.asset.json';
+import google from '@/assets/official-google-2026.jpg.asset.json';
+import instagram from '@/assets/official-instagram-2026.jpg.asset.json';
 import wallpaper from '@/assets/iphone-mountain-wallpaper.jpeg.asset.json';
 import profile from '@/assets/demo-profile.jpg.asset.json';
 import posts from '@/assets/demo-posts.jpg.asset.json';
@@ -32,6 +32,15 @@ export function Demo() {
     return () => window.clearTimeout(timer);
   }, [phase]);
   function reset(value = destination) { setDestination(value); setPhase('normal'); setReview(false); setRating(0); }
+  useEffect(() => {
+    const select = (event: Event) => {
+      if (!(event instanceof CustomEvent)) return;
+      if (event.detail !== 'Google' && event.detail !== 'Instagram') return;
+      setDestination(event.detail); setPhase('normal'); setReview(false); setRating(0);
+    };
+    window.addEventListener('tap-review:demo', select);
+    return () => window.removeEventListener('tap-review:demo', select);
+  }, []);
   const arrived = phase === 'destination' || phase === 'finished';
   const stage = phase === 'normal' || phase === 'approach' ? 0 : phase === 'detected' ? 1 : phase === 'touch' || phase === 'opening' ? 2 : 3;
   return <section id="demo" className="section realistic-demo">

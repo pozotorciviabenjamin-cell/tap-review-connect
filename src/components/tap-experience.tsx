@@ -2,10 +2,10 @@ import { useState, useEffect, useRef, type PointerEvent, type ReactNode, type Fo
 import { ArrowUpRight, Check, MessageCircle, Maximize2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
-import photo from '@/assets/tap-instagram-detail.jpg.asset.json';
-import googlePhoto from '@/assets/tap-google-detail.jpg.asset.json';
-import fullInstagram from '@/assets/tap-review-instagram-official.jpeg.asset.json';
-import fullGoogle from '@/assets/tap-review-google-official.jpeg.asset.json';
+import photo from '@/assets/official-instagram-2026.jpg.asset.json';
+import googlePhoto from '@/assets/official-google-2026.jpg.asset.json';
+import fullInstagram from '@/assets/official-instagram-full-2026.jpeg.asset.json';
+import fullGoogle from '@/assets/official-google-full-2026.jpeg.asset.json';
 import { submitInquiry } from '@/lib/inquiries.functions';
 import { tapReview, whatsapp } from '@/lib/tap-review';
 export { Demo } from './realistic-demo';
