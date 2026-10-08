@@ -13,8 +13,8 @@
 - [x] Replace displayed official product photos with newly supplied Google and Instagram designs everywhere.
 - [x] Upgrade existing products, selector, paired pack, personalization, setting examples and final CTA without changing prices or working contact functions.
 - [x] Connect catalog destination choices to NFC demo and verify mobile layouts and animations.
-- [ ] Test catalog and NFC demo at iPhone widths; fix overflow, touch targets, photo proportions and mobile/reduced-motion performance.
-- [ ] Second-stage art direction: refine existing hero, navigation, buttons and visual continuity without rebuilding or replacing official photos.
-- [ ] Add purposeful scroll narrative and before/after comparison; refine how-it-works, benefits and business presentation.
-- [ ] Add frontend personalization controls while keeping official printed artwork unchanged.
-- [ ] Review second-stage copy, final CTA, SEO, desktop/mobile accessibility, performance and existing functional flows.
+- [x] Test catalog and NFC demo at iPhone widths; fix overflow, touch targets, photo proportions and mobile/reduced-motion performance.
+- [x] Second-stage art direction: refine existing hero, navigation, buttons and visual continuity without rebuilding or replacing official photos.
+- [x] Add purposeful scroll narrative and before/after comparison; refine how-it-works, benefits and business presentation.
+- [x] Add frontend personalization controls while keeping official printed artwork unchanged.
+- [x] Review second-stage copy, final CTA, SEO, desktop/mobile accessibility, performance and existing functional flows.
