@@ -25,6 +25,9 @@ export function PremiumCatalog() {
  function selectProduct(product: Product) {
   window.dispatchEvent(new CustomEvent('tap-review:demo', { detail: product }));
   if (product === selected && !leaving) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+   clearTimeout(switchTimer.current); setSelected(product); setLeaving(false); return;
+  }
   clearTimeout(switchTimer.current); setLeaving(true);
   switchTimer.current = setTimeout(() => { setSelected(product); setLeaving(false); }, 250);
  }
