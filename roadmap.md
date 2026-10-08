@@ -13,3 +13,4 @@
 - [x] Replace displayed official product photos with newly supplied Google and Instagram designs everywhere.
 - [x] Upgrade existing products, selector, paired pack, personalization, setting examples and final CTA without changing prices or working contact functions.
 - [x] Connect catalog destination choices to NFC demo and verify mobile layouts and animations.
+- [ ] Test catalog and NFC demo at iPhone widths; fix overflow, touch targets, photo proportions and mobile/reduced-motion performance.
