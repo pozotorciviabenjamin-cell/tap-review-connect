@@ -23,8 +23,8 @@ export function Demo() {
   useEffect(() => {
     // Detection intentionally waits for the visitor. Timers cannot open the link.
     const next: Partial<Record<Phase, { phase: Phase; delay: number }>> = {
-      approach: { phase: 'detected', delay: 3300 }, touch: { phase: 'opening', delay: 1100 },
-      opening: { phase: 'destination', delay: 900 }, destination: { phase: 'finished', delay: 2600 },
+      approach: { phase: 'detected', delay: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 100 : 3300 }, touch: { phase: 'opening', delay: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 100 : 1100 },
+      opening: { phase: 'destination', delay: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 100 : 900 }, destination: { phase: 'finished', delay: 2600 },
     };
     const beat = next[phase];
     if (!beat) return;
@@ -54,7 +54,7 @@ export function Demo() {
         <span className="real-demo-surface-label">TAP REVIEW / {destination === 'Google' ? 'GOOGLE REVIEWS' : 'INSTAGRAM'}</span>
         <span className="demo-example-label">EXPERIENCIA ILUSTRATIVA</span>
         <div className="real-demo-scene">
-          <div className="real-card"><img src={destination === 'Google' ? google.url : instagram.url} alt={`Fotografía oficial de Tap Review ${destination}`} loading="lazy" /><span className="real-card-edge" /></div>
+          <div className="real-card"><img src={destination === 'Google' ? google.url : instagram.url} alt={`Fotografía oficial de Tap Review ${destination}`} width={destination === 'Google' ? 624 : 617} height={destination === 'Google' ? 449 : 1044} loading="lazy" /><span className="real-card-edge" /></div>
           <div className="real-nfc-ripple" aria-hidden="true"><i /><i /><span>TAP</span></div>
           <div className="real-iphone-position"><div className="real-iphone">
             <span className="iphone-side-key iphone-silent" /><span className="iphone-side-key iphone-volume" /><span className="iphone-side-key iphone-power" />
