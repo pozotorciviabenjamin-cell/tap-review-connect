@@ -36,3 +36,26 @@
 .real-iphone{transform-style:flat}.iphone-destination{z-index:5}.demo-instagram-real,.demo-google-real{z-index:1}.iphone-status.on-page{color:var(--demo-light)}
 .real-card img{object-fit:contain}.real-card{height:167px}.real-demo-surface[data-destination=Instagram] .real-card{height:271px}
 @media(max-width:500px){.real-card{height:144px}.real-demo-surface[data-destination=Instagram] .real-card{height:237px}}
+/* Mobile: composite movement only, without animated blur or shadows. */
+.demo-start,.demo-notification-prompt,.demo-replay{min-height:48px}
+@media(max-width:500px){
+ .real-demo-scene,.real-iphone,.real-card{transition-property:transform}
+ .real-demo-surface[data-phase=approach] .real-iphone{animation:none;filter:none}
+ .real-demo-surface[data-phase=approach] .real-iphone-position{will-change:transform}
+ .real-demo-surface-label{max-width:45%;line-height:1.5}
+ .demo-example-label{max-width:43%;line-height:1.5;text-align:right;color:var(--demo-ink);background:var(--demo-table-overlay);padding:3px 5px}
+}
+@media(max-width:350px){
+ .real-demo-scene{transform:scale(.6);margin-left:-311px}
+ .real-demo-surface[data-phase=approach] .real-demo-scene{transform:scale(.6)}
+ .real-demo-surface{height:430px}
+}
+@media(prefers-reduced-motion:reduce){
+ .real-card,.real-demo-surface[data-phase=approach] .real-card{transform:none!important}
+ .real-demo-surface .real-iphone{transform:none!important;filter:none!important}
+ .real-demo-surface[data-phase=approach] .real-demo-scene{transform:scale(1.08)}
+}
+@media(max-width:700px) and (prefers-reduced-motion:reduce){.real-demo-surface[data-phase=approach] .real-demo-scene{transform:scale(.88)}}
+@media(max-width:500px) and (prefers-reduced-motion:reduce){.real-demo-surface[data-phase=approach] .real-demo-scene{transform:scale(.73)}}
+@media(max-width:390px) and (prefers-reduced-motion:reduce){.real-demo-surface[data-phase=approach] .real-demo-scene{transform:scale(.68)}}
+@media(max-width:350px) and (prefers-reduced-motion:reduce){.real-demo-surface[data-phase=approach] .real-demo-scene{transform:scale(.6)}}

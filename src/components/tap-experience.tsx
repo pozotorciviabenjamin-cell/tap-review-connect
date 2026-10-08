@@ -16,12 +16,21 @@ export function ContactButton({ children = 'Quiero mi Tap Review', product, seco
 
 export function ProductPhoto({ className = '', product = 'Instagram' }: { className?: string; product?: 'Google' | 'Instagram' }) {
   const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(entries => {
+      node.dataset['inView'] = String(entries.some(entry => entry.isIntersecting));
+    });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
   function move(event: PointerEvent<HTMLDivElement>) {
-    if (event.pointerType !== 'mouse' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (event.pointerType !== 'mouse' || !window.matchMedia('(hover: hover) and (pointer: fine)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const rect = event.currentTarget.getBoundingClientRect();
-    event.currentTarget.style.setProperty('--tilt-x', `${(event.clientY - rect.top - rect.height / 2) / rect.height * -10}deg`);
-    event.currentTarget.style.setProperty('--tilt-y', `${(event.clientX - rect.left - rect.width / 2) / rect.width * 10}deg`);
-    event.currentTarget.style.setProperty('--light-x', `${(event.clientX - rect.left) / rect.width * 100}%`);
+    event.currentTarget.style.setProperty('--tilt-x', `${(event.clientY - rect.top - rect.height / 2) / rect.height * -6}deg`);
+    event.currentTarget.style.setProperty('--tilt-y', `${(event.clientX - rect.left - rect.width / 2) / rect.width * 6}deg`);
+    event.currentTarget.style.setProperty('--light-x', `${(event.clientX - rect.left) / rect.width * 60}%`);
     event.currentTarget.style.setProperty('--light-y', `${(event.clientY - rect.top) / rect.height * 100}%`);
   }
   return <div ref={ref} className={`product-photo ${product === 'Google' ? 'google-photo' : ''} ${className}`} onPointerMove={move} onPointerLeave={() => { ref.current?.style.setProperty('--tilt-x', '0deg'); ref.current?.style.setProperty('--tilt-y', '0deg'); }}><img src={product === 'Google' ? googlePhoto.url : photo.url} alt={`Fotografía oficial de tarjetas NFC Tap Review ${product}`} width={product === 'Google' ? 624 : 617} height={product === 'Google' ? 449 : 1044} loading={className.includes('hero') ? 'eager' : 'lazy'} /><span className="photo-light" aria-hidden="true" /><Dialog><DialogTrigger asChild><Button variant="secondary" size="icon" className="photo-zoom" aria-label={`Ampliar fotografía de Tap Review ${product}`} title={`Ampliar fotografía de Tap Review ${product}`}><Maximize2 /></Button></DialogTrigger><DialogContent className="official-photo-dialog"><DialogTitle>Tap Review — {product}</DialogTitle><DialogDescription>Fotografía oficial del producto.</DialogDescription><img src={product === 'Google' ? fullGoogle.url : fullInstagram.url} alt={`Fotografía original de Tap Review ${product}`} className="official-photo-expanded" /></DialogContent></Dialog></div>;

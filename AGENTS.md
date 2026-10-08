@@ -19,3 +19,6 @@
 - Keep demo destination identity and URLs in a browser-safe demo-only configuration, with explicit example flags; this allows replacing references without inventing account data or changing catalog contacts.
 
 - Keep the editorial catalog and illustrative setting selector in presentation modules, reusing ProductPhoto and ContactButton; dispatch the existing demo selection event so product links preserve the demo’s visitor gates.
+
+- Keep scroll narrative and personalization in isolated presentation modules; identity inputs update a separate reference panel, never the official printed product artwork.
+- Use IntersectionObserver for discrete scroll story states and a requestAnimationFrame-throttled progress indicator; disable sticky narrative on narrow screens and remove movement under reduced motion.

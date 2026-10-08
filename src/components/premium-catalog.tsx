@@ -5,6 +5,7 @@ import { ProductPhoto, ContactButton } from '@/components/tap-experience';
 import { money, tapReview } from '@/lib/tap-review';
 import { CatalogSettings } from './catalog-settings';
 import './premium-catalog.css';
+import { PersonalizationConfigurator } from './personalization-configurator';
 
 type Product = 'Google' | 'Instagram';
 const products = {
@@ -25,6 +26,9 @@ export function PremiumCatalog() {
  function selectProduct(product: Product) {
   window.dispatchEvent(new CustomEvent('tap-review:demo', { detail: product }));
   if (product === selected && !leaving) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+   clearTimeout(switchTimer.current); setSelected(product); setLeaving(false); return;
+  }
   clearTimeout(switchTimer.current); setLeaving(true);
   switchTimer.current = setTimeout(() => { setSelected(product); setLeaving(false); }, 250);
  }
@@ -43,4 +47,4 @@ export function PremiumCatalog() {
  </div></section>;
 }
 export function PremiumPack() {return <section className="pack-section premium-pack"><div className="container pack-layout reveal"><div className="pack-art"><ProductPhoto product="Google"/><ProductPhoto product="Instagram"/><div className="pack-caption"><span className="google-mark">G</span><span>+</span><Instagram/><span>GOOGLE REVIEWS + INSTAGRAM</span></div></div><div className="pack-copy"><span className="eyebrow">DOS TARJETAS · PRECIO LANZAMIENTO</span><h2>TAP REVIEW PACK</h2><span className="pack-name">Google Reviews + Instagram</span><p>Todo lo que necesitás para conectar tu negocio con tus clientes.</p><div className="pack-price"><strong>{money(tapReview.packPrice)}</strong><del>{money(tapReview.individualPrice*2)}</del><span>Ahorrás {money(tapReview.individualPrice*2-tapReview.packPrice)}</span></div><ContactButton product="el Pack Google + Instagram">QUIERO EL PACK</ContactButton><small>Google + Instagram · 2 tarjetas personalizadas</small></div></div></section>;}
-export function PremiumPersonalization() {return <><section id="personalizacion" className="section catalog-personalization"><div className="container reveal"><div><span className="eyebrow">PERSONALIZACIÓN</span><h2>TU TARJETA.<br />TU MARCA.</h2><p>Personalizamos tu TAP REVIEW para que represente la identidad de tu negocio.</p><ContactButton secondary>CONOCER MÁS</ContactButton></div><div className="catalog-personalization-art"><ProductPhoto product="Instagram"/></div></div></section><section className="section catalog-setting"><div className="container"><header><span className="eyebrow">HECHA PARA TU NEGOCIO</span><h2>Así se vería en tu negocio.</h2></header><CatalogSettings/><div className="catalog-demo-invitation"><h3>¿QUERÉS VER CÓMO FUNCIONA?</h3><div><DemoButton product="Google">VER GOOGLE REVIEWS</DemoButton><DemoButton product="Instagram">VER INSTAGRAM</DemoButton></div></div></div></section></>;}
+export function PremiumPersonalization() {return <><section id="personalizacion" className="section catalog-personalization"><div className="container"><div className="personalization-intro"><div><span className="eyebrow">PERSONALIZACIÓN</span><h2>TU TARJETA.<br />TU MARCA.</h2><p>Personalizamos tu TAP REVIEW para que represente la identidad de tu negocio.</p></div><ContactButton secondary>CONOCER MÁS</ContactButton></div><PersonalizationConfigurator/></div></section><section className="section catalog-setting"><div className="container"><header><span className="eyebrow">HECHA PARA TU NEGOCIO</span><h2>Así se vería en tu negocio.</h2></header><CatalogSettings/><div className="catalog-demo-invitation"><h3>¿QUERÉS VER CÓMO FUNCIONA?</h3><div><DemoButton product="Google">VER GOOGLE REVIEWS</DemoButton><DemoButton product="Instagram">VER INSTAGRAM</DemoButton></div></div></div></section></>;}
