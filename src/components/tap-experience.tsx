@@ -20,7 +20,7 @@ export function ProductPhoto({ className = '', product = 'Instagram' }: { classN
     const node = ref.current;
     if (!node) return;
     const observer = new IntersectionObserver(entries => {
-      node.dataset.inView = String(entries.some(entry => entry.isIntersecting));
+      node.dataset['inView'] = String(entries.some(entry => entry.isIntersecting));
     });
     observer.observe(node);
     return () => observer.disconnect();

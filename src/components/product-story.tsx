@@ -19,7 +19,7 @@ export function ProductStory() {
   if (!node) return;
   const observer = new IntersectionObserver(entries => {
    const visible = entries.filter(entry => entry.isIntersecting).sort((a,b) => b.intersectionRatio-a.intersectionRatio)[0];
-   if (visible) setActive(Number((visible.target as HTMLElement).dataset.beat));
+   if (visible) setActive(Number((visible.target as HTMLElement).dataset['beat']));
   }, { rootMargin: '-22% 0px -30% 0px', threshold: [0,.2,.5,.8] });
   node.querySelectorAll('[data-beat]').forEach(el => observer.observe(el));
   return () => observer.disconnect();
